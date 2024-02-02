@@ -30,6 +30,13 @@ ALTER TABLE games ADD COLUMN winner_goals INT NOT NULL;
 
 ALTER TABLE games ADD COLUMN opponent_goals INT NOT NULL;
 
-ALTER TABLE teams ALTER COLUMN winner_id IS NULL;
+ALTER TABLE games ALTER COLUMN winner_id SET NOT NULL;
 
 ALTER TABLE teams ALTER COLUMN name SET NOT NULL;
+
+UPDATE games SET winner_id=0 WHERE winner_id IS NULL;
+
+ALTER TABLE games ALTER COLUMN winner_id INT NULL;
+
+
+
